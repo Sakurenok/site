@@ -1,0 +1,149 @@
+site_name: География
+site_description: Современный интерактивный справочник по географии с красивым дизайном, картами, викторинами и подробной информацией о странах и материках
+site_author: Географический справочник
+site_url: https://your-site.com
+
+repo_name: Кабинет Географии
+repo_url: https://t.me/Kabinet_Geografii
+
+# Локализация и тема
+theme:
+  name: material
+  language: ru
+  favicon: assets/images/favicon.ico
+  palette:
+    - scheme: default
+      primary: brown
+      accent: amber
+    - scheme: slate
+      primary: brown
+      accent: amber
+  font:
+    text: Roboto
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/telegram
+    edit: material/pencil
+  features:
+    - navigation.top
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.expand
+    - navigation.tracking
+    - navigation.sections
+    - navigation.prune
+    - toc.integrate
+    - toc.follow
+    - header.autohide
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+    - search.share
+    - announce.dismiss
+
+# Навигация по сайту
+nav:
+  - Главная: index.md
+  - Материки: materik/index.md
+  - Европа: 
+    - Главная: continents/europe/europe.md
+    - Швеция: continents/europe/
+  - Азия: regions/asia.md
+  - Африка: regions/africa.md
+  - Америка: regions/america.md
+  - Океания: regions/oceania.md
+  - Австралия: regions/australia.md
+  - Арктика: regions/arctic.md
+  - Антарктика: regions/antarctica.md
+  - Климат и природа: climate/index.md
+  - Терминология: terminology/index.md
+
+# Плагины и расширения
+plugins:
+  - search:
+      lang: ru
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      width: 90%
+      height: 90%
+      zoomable: true
+      draggable: true
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+  - awesome-pages
+  - mermaid2
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - abbr
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: "Ссылка на этот раздел"
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: yourusername
+      repo: geography-guide
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra:
+  version:
+    provider: mike
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+  consent:
+    title: Уведомление о файлах cookie
+    description: >-
+      Мы используем файлы cookie для улучшения работы сайта и анализа трафика.
+      Продолжая использовать сайт, вы соглашаетесь с нашей политикой конфиденциальности.
+  generator: false
+  copyright: >
+    Copyright &copy; 2025 Географический справочник —
+    <a href="#__consent">Политика конфиденциальности</a>
+
+extra_css:
+  - assets/styles/extra.css
+
+extra_javascript:
+  - assets/js/init.js
+
+# Где лежит контент
+docs_dir: docs
