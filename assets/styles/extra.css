@@ -1,0 +1,632 @@
+/* ===== КАСТОМНЫЕ СТИЛИ ДЛЯ ГЕОГРАФИЧЕСКОГО СПРАВОЧНИКА ===== */
+
+/* Фоновое изображение для всего сайта */
+body {
+  background-image: url('../images/logo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.md-main {
+  background-image: url('../images/logo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.md-main__inner {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(2px);
+  min-height: 100vh;
+}
+
+/* Фон для навигации */
+.md-header {
+  background: rgba(139, 69, 19, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.md-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+}
+
+/* Основные переменные */
+:root {
+  --geo-primary: #8B4513;
+  --geo-secondary: #D2691E;
+  --geo-accent: #CD853F;
+  --geo-success: #228B22;
+  --geo-warning: #FF8C00;
+  --geo-info: #4682B4;
+  --geo-gradient: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+  --geo-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
+  --geo-border-radius: 12px;
+  --geo-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Главная страница - герой секция */
+.md-main__inner {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Улучшенные карточки */
+.geo-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 250, 0.98) 100%);
+  border-radius: var(--geo-border-radius);
+  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.2);
+  padding: 2rem;
+  margin: 1.5rem 0;
+  transition: var(--geo-transition);
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+.geo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--geo-gradient);
+}
+
+.geo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(103, 58, 183, 0.4);
+}
+
+.geo-card h3 {
+  color: var(--geo-primary);
+  margin-top: 0;
+  font-weight: 600;
+}
+
+/* Статистические блоки */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stat-item {
+  background: linear-gradient(145deg, rgba(139, 69, 19, 0.9) 0%, rgba(210, 105, 30, 0.9) 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.3);
+  transition: var(--geo-transition);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+  animation: pulse 2s infinite;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Кнопки */
+.geo-btn {
+  background: linear-gradient(145deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+}
+
+.geo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(44, 62, 80, 0.5);
+  color: white;
+  text-decoration: none;
+}
+
+/* Кнопки для регионов */
+.geo-btn-europe {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+  margin: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.geo-btn-europe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-asia {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+  margin: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.geo-btn-asia:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-africa {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+  margin: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.geo-btn-africa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-america {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+  margin: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.geo-btn-america:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-oceania {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+  margin: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.geo-btn-oceania:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-australia {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+  margin: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.geo-btn-australia:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-arctic {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+  margin: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.geo-btn-arctic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-antarctica {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+  margin: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.geo-btn-antarctica:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 69, 19, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-climate {
+  background: linear-gradient(145deg, #16a085 0%, #138d75 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--geo-border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--geo-transition);
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(22, 160, 133, 0.3);
+}
+
+.geo-btn-climate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(22, 160, 133, 0.5);
+  color: white;
+  text-decoration: none;
+}
+
+.geo-btn-secondary {
+  background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  color: var(--geo-primary);
+  border: 2px solid var(--geo-primary);
+}
+
+.geo-btn-secondary:hover {
+  background: var(--geo-primary);
+  color: white;
+}
+
+/* Информационные блоки */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.info-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 250, 0.98) 100%);
+  border-radius: var(--geo-border-radius);
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.2);
+  transition: var(--geo-transition);
+  border-left: 4px solid var(--geo-primary);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Таблицы */
+.md-typeset table:not([class]) {
+  border-radius: var(--geo-border-radius);
+  overflow: hidden;
+  box-shadow: var(--geo-shadow);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--geo-gradient);
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.md-typeset table:not([class]) td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(103, 58, 183, 0.1);
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: rgba(103, 58, 183, 0.05);
+}
+
+/* Цветные блоки для разных типов информации */
+.geo-success {
+  background: linear-gradient(145deg, #e8f5e8 0%, #c8e6c9 100%);
+  border-left: 4px solid var(--geo-success);
+  color: #2e7d32;
+}
+
+.geo-warning {
+  background: linear-gradient(145deg, #fff3e0 0%, #ffcc02 100%);
+  border-left: 4px solid var(--geo-warning);
+  color: #e65100;
+}
+
+.geo-info {
+  background: linear-gradient(145deg, #e3f2fd 0%, #bbdefb 100%);
+  border-left: 4px solid var(--geo-info);
+  color: #1565c0;
+}
+
+/* Навигационные элементы */
+.md-nav__item--active > .md-nav__link {
+  color: var(--geo-primary);
+  font-weight: 600;
+}
+
+.md-nav__link:hover {
+  color: var(--geo-secondary);
+}
+
+/* Заголовки */
+.md-typeset h1 {
+  color: var(--geo-primary);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.md-typeset h2 {
+  color: var(--geo-primary);
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--geo-secondary);
+}
+
+.md-typeset h3 {
+  color: var(--geo-secondary);
+  font-weight: 600;
+}
+
+/* Код блоки */
+.md-typeset pre {
+  border-radius: var(--geo-border-radius);
+  box-shadow: var(--geo-shadow);
+}
+
+/* Поиск */
+.md-search__form {
+  border-radius: var(--geo-border-radius);
+  box-shadow: var(--geo-shadow);
+}
+
+/* Футер */
+.md-footer {
+  background: var(--geo-gradient);
+  color: white;
+}
+
+.md-footer-meta {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .geo-card {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .stat-item {
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+}
+
+/* Темная тема */
+[data-md-color-scheme="slate"] {
+  --geo-primary: #bb86fc;
+  --geo-secondary: #03dac6;
+  --geo-accent: #ff9800;
+}
+
+[data-md-color-scheme="slate"] .geo-card {
+  background: linear-gradient(145deg, #1e1e1e 0%, #2d2d2d 100%);
+  border-color: rgba(187, 134, 252, 0.2);
+}
+
+[data-md-color-scheme="slate"] .info-card {
+  background: #2d2d2d;
+  border-color: rgba(187, 134, 252, 0.3);
+}
+
+/* Специальные эффекты */
+.floating-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-effect {
+  animation: pulse 2s infinite;
+}
+
+/* Улучшенные admonitions */
+.md-typeset .admonition {
+  border-radius: var(--geo-border-radius);
+  box-shadow: var(--geo-shadow);
+  border: none;
+}
+
+.md-typeset .admonition-title {
+  font-weight: 600;
+  border-radius: var(--geo-border-radius) var(--geo-border-radius) 0 0;
+}
+
+/* Кастомные вкладки */
+.md-typeset .tabbed-set {
+  border-radius: var(--geo-border-radius);
+  overflow: hidden;
+  box-shadow: var(--geo-shadow);
+}
+
+.md-typeset .tabbed-set > label {
+  background: var(--geo-gradient);
+  color: white;
+  font-weight: 500;
+}
+
+.md-typeset .tabbed-set > label:hover {
+  background: rgba(103, 58, 183, 0.8);
+}
+
+/* Прогресс бары */
+.progress-bar {
+  background: var(--geo-gradient);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.progress-fill {
+  background: var(--geo-secondary);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+/* Интерактивные элементы */
+.interactive-element {
+  cursor: pointer;
+  transition: var(--geo-transition);
+}
+
+.interactive-element:hover {
+  transform: scale(1.02);
+}
+
+/* Специальные иконки */
+.geo-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Анимация загрузки */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(103, 58, 183, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--geo-primary);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
